@@ -1,0 +1,12 @@
+D:\react\c#\Technobrain\Technobrain\bin\Debug\xunit.runner.visualstudio.testadapter.dll
+D:\react\c#\Technobrain\Technobrain\bin\Debug\xunit.runner.reporters.net452.dll
+D:\react\c#\Technobrain\Technobrain\bin\Debug\xunit.runner.utility.net452.dll
+D:\react\c#\Technobrain\Technobrain\bin\Debug\xunit.abstractions.dll
+D:\react\c#\Technobrain\Technobrain\bin\Debug\Technobrain.exe
+D:\react\c#\Technobrain\Technobrain\bin\Debug\Technobrain.pdb
+D:\react\c#\Technobrain\Technobrain\bin\Debug\Newtonsoft.Json.dll
+D:\react\c#\Technobrain\Technobrain\bin\Debug\nunit.framework.dll
+D:\react\c#\Technobrain\Technobrain\bin\Debug\Newtonsoft.Json.xml
+D:\react\c#\Technobrain\Technobrain\bin\Debug\nunit.framework.xml
+D:\react\c#\Technobrain\Technobrain\obj\Debug\Technobrain.exe
+D:\react\c#\Technobrain\Technobrain\obj\Debug\Technobrain.pdb

@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DeepComparison</name>
+    </assembly>
+    <members>
+        <member name="T:DeepComparison.ClrTypes">
+            <summary>Contains lists of CLR types</summary>
+        </member>
+        <member name="P:DeepComparison.ClrTypes.AllExceptBasic">
+            <summary>
+            List of types that have "compare by value" semantic + reasonable ToString.
+            It makes sense to not GoDeepFor them
+            </summary>
+        </member>
+        <member name="T:DeepComparison.Collections">
+            <summary>
+            Has default collection selectors to be use with 
+            <see cref="M:DeepComparison.DeepComparerBuilder.GoDeepFor(System.Func{System.Type,System.Boolean})"/>
+            </summary>
+        </member>
+        <member name="F:DeepComparison.Collections.Array">
+            <summary>Tells comparer how to find arrays. 
+            Suggests to compare them sequentially </summary>
+        </member>
+        <member name="F:DeepComparison.Collections.List">
+            <summary>Tells comparer how to find <see cref="F:DeepComparison.Collections.List"/>s.
+            Suggests to compare them sequentially </summary>
+        </member>
+        <member name="F:DeepComparison.Collections.HashSet">
+            <summary>Tells comparer how to find <see cref="F:DeepComparison.Collections.HashSet"/>s. 
+            Suggests to compare them by equivalency </summary>
+        </member>
+        <member name="F:DeepComparison.Collections.Enumerable">
+            <summary>Tells comparer how to find <see cref="T:System.Collections.Generic.IEnumerable`1"/>s.
+            Suggests to compare them sequentially </summary>
+        </member>
+        <member name="T:DeepComparison.ComparisonResult">
+            <summary>Combines result of comparison with the description of what did not compare </summary>
+        </member>
+        <member name="P:DeepComparison.ComparisonResult.AreEqual">
+            <summary>True if objects are equal</summary>
+        </member>
+        <member name="P:DeepComparison.ComparisonResult.Path">
+            <summary>Path to the property that does not compare</summary>
+        </member>
+        <member name="P:DeepComparison.ComparisonResult.Message">
+            <summary>Comparer that was used and the compared values</summary>
+        </member>
+        <member name="M:DeepComparison.ComparisonResult.#ctor(System.Boolean)">
+            <summary>ctor</summary>
+        </member>
+        <member name="M:DeepComparison.ComparisonResult.#ctor(System.String)">
+            <summary>ctor</summary>
+        </member>
+        <member name="M:DeepComparison.ComparisonResult.op_Implicit(System.String)~DeepComparison.ComparisonResult">
+            <summary>False</summary>
+        </member>
+        <member name="M:DeepComparison.ComparisonResult.ToString">
+            <summary>pretty prints the result</summary>
+        </member>
+        <member name="T:DeepComparison.CollectionComparison">
+            <summary>There are many ways to compare collections</summary>
+        </member>
+        <member name="F:DeepComparison.CollectionComparison.Sequential">
+            <summary>Collections are equal when they 
+            all the same items in the same order</summary>
+        </member>
+        <member name="F:DeepComparison.CollectionComparison.Equivalency">
+            <summary>Collections are equal when all items present in one
+            collection present in the other </summary>
+        </member>
+        <member name="T:DeepComparison.TreatObjectAs">
+            <summary>Generic mechanism to match objects with comparers</summary>
+        </member>
+        <member name="T:DeepComparison.TreatObjectAs.Collection">
+            <summary>Treat an object as a collection</summary>
+        </member>
+        <member name="P:DeepComparison.TreatObjectAs.Collection.Comparison">
+            <summary>Choose a way to compare collections</summary>
+        </member>
+        <member name="P:DeepComparison.TreatObjectAs.Collection.ItemType">
+            <summary>Comparer will assume collection items to be of this type</summary>
+        </member>
+        <member name="P:DeepComparison.TreatObjectAs.Collection.ToEnumerable">
+            <summary>Comparer will use this function to access the object</summary>
+        </member>
+        <member name="M:DeepComparison.TreatObjectAs.Collection.#ctor(DeepComparison.CollectionComparison,System.Type,System.Func{System.Object,System.Collections.IEnumerable})">
+            <summary>initializes all props</summary>
+        </member>
+        <member name="M:DeepComparison.TreatObjectAs.Collection.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="T:DeepComparison.TreatObjectAs.Custom">
+            <summary>Treat object as requiring a custom comparison</summary>
+        </member>
+        <member name="P:DeepComparison.TreatObjectAs.Custom.Comparer">
+            <summary>Your comparison function</summary>
+        </member>
+        <member name="M:DeepComparison.TreatObjectAs.Custom.#ctor(System.String,System.Func{System.Object,System.Object,System.Boolean})">
+            <summary>initializes all props</summary>
+        </member>
+        <member name="M:DeepComparison.TreatObjectAs.Custom.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="M:DeepComparison.TreatObjectAs.Special.ToString">
+            <inheritdoc/>
+        </member>
+        <member name="F:DeepComparison.TreatObjectAs.PropertiesBag">
+            <summary>Tells comparer to compare properties 
+                instead of calling <see cref="M:System.Object.Equals(System.Object)"/> on the object itself</summary>
+        </member>
+        <member name="F:DeepComparison.TreatObjectAs.Simple">
+            <summary>Tells comparer to call <see cref="M:System.Object.Equals(System.Object)"/>
+                on this object. </summary>
+        </member>
+        <member name="T:DeepComparison.DeepComparer">
+            <summary>A class with Compare() method</summary>
+        </member>
+        <member name="M:DeepComparison.DeepComparer.Compare``1(``0,``0)">
+            <summary>Compares two objects deeply</summary>
+            <typeparam name="T">objects formal type. 
+                By default comparer doesn't care about runtime types 
+                of the arguments</typeparam>
+        </member>
+        <member name="M:DeepComparison.DeepComparer.Compare(System.Type,System.Object,System.Object)">
+            <summary>Compares two objects deeply</summary>
+            <param name="formalType">objects formal type. 
+                By default comparer doesn't care about runtime types 
+                of the arguments</param>
+            <param name="x">an object to compare</param>
+            <param name="y">an object to compare</param>
+            <returns>true when equal</returns>
+        </member>
+        <member name="T:DeepComparison.CollectionPredicate">
+            <summary>Help comparer to choose which objects to treat as collections</summary>
+        </member>
+        <member name="T:DeepComparison.DeepComparerBuilder">
+            <summary>Helps building <see cref="T:DeepComparison.DeepComparer"/> using fluent syntax </summary>
+        </member>
+        <member name="M:DeepComparison.DeepComparerBuilder.FilterProperties(System.Func{System.Reflection.PropertyInfo,System.Boolean})">
+            <summary>Comparer compares all properties by default. Choose which you like</summary>
+        </member>
+        <member name="M:DeepComparison.DeepComparerBuilder.GoDeepFor(System.Func{System.Type,System.Boolean})">
+            <summary>Comparer compares all object as 
+                <see cref="M:System.Object.Equals(System.Object)"/> by default. 
+                Choose objects you would like to treat as properties bags</summary>
+        </member>
+        <member name="M:DeepComparison.DeepComparerBuilder.GoDeepFor(DeepComparison.CollectionPredicate)">
+            <summary>Comparer compares all object as 
+                <see cref="M:System.Object.Equals(System.Object)"/> by default. 
+                Choose objects you would like to treat as collections</summary>
+        </member>
+        <member name="M:DeepComparison.DeepComparerBuilder.CustomRuleFor``1(System.Linq.Expressions.Expression{System.Func{``0,``0,System.Boolean}})">
+            <summary>Comparer compares all object as 
+                <see cref="M:System.Object.Equals(System.Object)"/> by default. 
+                Choose objects you would like to apply 
+                your custom compare function to</summary>
+        </member>
+        <member name="M:DeepComparison.DeepComparerBuilder.Build">
+            <summary>Returns an instance of <see cref="T:DeepComparison.DeepComparer"/></summary>
+            <remarks>You can call it and other methods as many times as you like</remarks>
+        </member>
+    </members>
+</doc>
